@@ -5,4 +5,5 @@
 nodemon.json
 
 # Ignore any .jpg or .jpg in the uploads and postImages folder
-/uploads/postImages/*.[jpg]
+/uploads/postImages/*.jpg
+/uploads/postImages/*.jpeg
