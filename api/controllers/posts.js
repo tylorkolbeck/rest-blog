@@ -70,9 +70,38 @@ exports.posts_create_post = (req, res, next) => {
             })
         })
         .catch(err => {
+            const errorObj = fieldCheck(err)
             console.log(err)
             res.status(500).json({
-                error: err
+                ...errorObj
+
             })
+            
         })
 }
+
+// This error checking function checks to see what
+// fields were missing on a post request and returns them
+fieldCheck = (err) => {
+    const keys = Object.keys(err.errors)
+    const numErrors = keys.length
+    const errorTypes = []
+    const missingFields = []
+
+    keys.forEach((key) => {
+        if (err.errors[key].message) {
+            errorTypes.push(err.errors[key].message)
+        }
+        if (err.errors[key].path) {
+            missingFields.push(err.errors[key].path)
+        }
+       
+        
+    })
+    return {
+        numErrors: numErrors,
+        errorTypes: errorTypes,
+        missingFields: missingFields
+    }
+}
+

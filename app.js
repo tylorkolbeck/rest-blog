@@ -1,3 +1,4 @@
+//  APPLICATION LEVEL
 const express = require('express')
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
@@ -47,6 +48,8 @@ app.use((req, res, next) => {
     }
     next() // Allow the request to continue to the routes
 })
+// DISABLE X-Powered-By header.  Prevents attackers from detecting apps running express
+app.disable('x-powered- by')
 
 
 // Sets up a middleware which every request is funneled through and forwarded to routes
