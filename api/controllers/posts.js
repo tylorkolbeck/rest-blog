@@ -1,3 +1,5 @@
+// TODO: refactor the body objects
+
 const Post = require("../models/post")
 const mongoose = require("mongoose");
 
@@ -47,12 +49,11 @@ exports.posts_create_post = (req, res, next) => {
         description: req.body.description,
         tags: req.body.tags,
         category:req.body.category,
-        postImages: req.body.postImages,
+        postImages: req.file.path,
         isPublic:req.body.isPublic
     })
-    post.save() // Save the post to the DB
+    post.save() // Save the post to the DB then show the results
         .then(result => {
-            console.log(result)
             res.status(201).json({
                 message: 'Post Added!',
                 createdPost: {
@@ -70,13 +71,13 @@ exports.posts_create_post = (req, res, next) => {
             })
         })
         .catch(err => {
-            const errorObj = fieldCheck(err)
+            const errorObj = fieldCheck(err) // Build a custom error object to return
             console.log(err)
             res.status(500).json({
+                message: 'Error',
                 ...errorObj
 
             })
-            
         })
 }
 
@@ -95,9 +96,8 @@ fieldCheck = (err) => {
         if (err.errors[key].path) {
             missingFields.push(err.errors[key].path)
         }
-       
-        
     })
+    // Return an object holding the details of the error
     return {
         numErrors: numErrors,
         errorTypes: errorTypes,

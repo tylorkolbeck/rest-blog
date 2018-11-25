@@ -3,3 +3,6 @@
 
 # ignore the file holding environment variables
 nodemon.json
+
+# Ignore any .jpg or .jpg in the uploads and postImages folder
+/uploads/postImages/*.[jpg]

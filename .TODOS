@@ -1,0 +1,24 @@
+TODO: Refactor the /posts controller code
+TODO: Setup some middleware for handling image uploads on the /posts route
+TODO: Make uploads fold only accessable to certain users or only from the server
+TODO: Ignore jpg in the uploads folder in gitignore
+
+
+
+
+
+
+
+REFERENCE: 
+
+ #### This is a good copy and paste for making a test POST request to /posts ####
+    {
+        "title": "Test Title",
+        "author":"Test Author",
+        "bodyText": "Test body text",
+        "description": "Test Description",
+        "tags": ["tags", "tag2","tag3"],
+        "category": "Test Category",
+        "postImages": ["image1.jpg", "image2.jpg", "image3.jpg"],
+        "isPublic": "false"
+    }
