@@ -1,0 +1,36 @@
+How to push an existing project to GitHub:
+
+** DONT FORGET TO MAKE A .gitignore FILE TO PREVENT UPLOADING SENSITIVE DATA
+** OR LARGE NODE_MUDULES FILES. **
+
+###### UPLOADING AN EXISTING LOCAL PROJECT TO A NEW REPO ######
+1. Create a new repository on GitHub WITHOUT the readme file.
+2. Initialize the local project as a git repository by running git init in the project directory.
+	git init
+3. Set the remote origin by running the following command in the local directory.
+	git remote add origin https://github.com/tylorkolbeck/<NAME_OF_REPOSITORY>.git
+4. Next run:
+	git push -u origin master
+5. Stage all the local files by running:
+	git add .
+6. Make an initial commit:
+	git commit -m “First Commit”
+7. This pushes the master directory to the origin(github). All the files will be uploaded.
+	git push origin master
+
+
+###### MAKING A COPY OF A REPO ######
+
+1. Change to the local directory that you want to copy the repo too. 
+	cd desktop
+2. Clone the repo in the directory by running the following command.
+	git clone <URL_OF_THE_REPO>
+
+
+###### CHANGE THE REMOTE ORGIN OF A REPO ######
+1. First see if there is already an origin:
+	git remote -v
+2.Remove the old origin if it exists:
+	git remote rm origin
+3. Add the new origin with: 
+	git remote add origin https://github.com/tylorkolbeck/<NAME_OF_REPO>.gitgit_help
