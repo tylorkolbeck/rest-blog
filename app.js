@@ -4,34 +4,30 @@ const morgan = require('morgan')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const app = express()
-// const logger = require('./api/middleware/requestTimeLogger') // Custom console logger middleware in the works
-
-const postsRoutes = require('./api/routes/posts')
 
 // ATTATCH THE ROUTES
-const orderRoutes = require('./api/routes/orders')
+const postsRoutes = require('./api/routes/posts')
+const commentsRoutes = require('./api/routes/comments')
 const userRoutes = require('./api/routes/user')
 
 //Set up mongoose connection
-const mongoConnectionString = `mongodb://${process.env.MLAB_USERNAME}:${process.env.MLAB_PASSWORD}@ds159013.mlab.com:59013/blog_db`
+
+// Mlab DB
+// const mongoConnectionString = `mongodb://${process.env.MLAB_USERNAME}:${process.env.MLAB_PASSWORD}@ds159013.mlab.com:59013/blog_db`
+// Local DB
+const mongoConnectionString = process.env.MONGO_LOCAL_DB // DONT FORGET TO START LOCAL MONGODB
+
 mongoose.connect(mongoConnectionString, { useNewUrlParser: true });
 mongoose.Promise = global.Promise;
 mongoose.set('useCreateIndex', true);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-// FOR LOCALHOST TESTING
-// mongoose.connect("mongodb://localhost:27017/node-rest-shop/shop")
-
-
-// Middleware //
-
-// app.use(logger.requestTime) // Custom console logger middleware in the works. 
-
+// ######### Middleware ########
 app.use(morgan('dev')) // logs incoming requests
 // https://www.npmjs.com/package/body-parser
 
-// Middleware to make the uploads file public.
+// make the uploads file public.
 app.use('/uploads', express.static('uploads'))
 
 app.use(bodyParser.urlencoded({extended: false})) // parses url encoded bodies
@@ -54,7 +50,7 @@ app.disable('x-powered- by')
 
 // Sets up a middleware which every request is funneled through and forwarded to routes
 app.use('/posts', postsRoutes) 
-app.use('/orders', orderRoutes) 
+app.use('/comments', commentsRoutes) 
 app.use('/user', userRoutes) 
 
 app.use((req, res, next) => {

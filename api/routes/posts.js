@@ -13,7 +13,8 @@ const storage = multer.diskStorage({
         cb(null, './uploads/postImages')
     },
     filename: function(req, file, cb) {
-        cb(null, new Date().toISOString() + file.originalname)
+        cb(null, file.originalname)
+        // cb(null, new Date().toISOString() + file.originalname)
     }
 })
 
@@ -26,7 +27,7 @@ const fileFilter = (req, file, cb) => {
 }
 
 const upload = multer({
-    storage: storage, 
+    storage: storage,
     limits: {
         filesize: 1024 * 1024 * 5,
     },
@@ -34,15 +35,25 @@ const upload = multer({
 })
 // ###### END MULTER SETUP ###### //
 
-// POST
+// GET
 // posts/
+// GETS all posts
 router.get("/", PostsController.posts_get_all);
 
 // POST
-// posts/:postId
+// posts/
+// Adds a post to posts
 // NEED TO ADD AUTHORIZATION
-router.post("/", upload.single('postImages'), PostsController.posts_create_post);
+router.post("/", upload.array('postImages', 10), PostsController.posts_create_post);
 
-// router.get("/", checkAuth, OrdersController.posts_create_post);
+// GET
+// posts/:postid
+// gets a specific post from the db
+router.get("/:postId", PostsController.posts_get_post);
+
+// DELETE
+// posts/postId
+// Deletes a post from the db
+router.delete("/:postId", PostsController.posts_delete_post);
 
 module.exports = router;

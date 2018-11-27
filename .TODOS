@@ -1,7 +1,16 @@
 TODO: Refactor the /posts controller code
 TODO: Setup some middleware for handling image uploads on the /posts route
 TODO: Make uploads fold only accessable to certain users or only from the server
-TODO: Ignore jpg in the uploads folder in gitignore
+TODO: Ignore jpg in the uploads folder in gitignore 
+
+TODO: Create a comment system
+    ## Create a comment schema 
+    ## create routes to enter new comments
+    ## create a route to show the comments
+    ##
+    ##
+
+
 
 
 
@@ -10,6 +19,8 @@ TODO: Ignore jpg in the uploads folder in gitignore
 
 
 REFERENCE: 
+
+## A POST request to /posts will need to be type form-data if uploading an image ##
 
  #### This is a good copy and paste for making a test POST request to /posts ####
     {
