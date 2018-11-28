@@ -44,7 +44,7 @@ router.get("/", PostsController.posts_get_all);
 // posts/
 // Adds a post to posts
 // NEED TO ADD AUTHORIZATION
-router.post("/", upload.array('postImages', 10), PostsController.posts_create_post);
+router.post("/", checkAuth, upload.array('postImages', 10), PostsController.posts_create_post);
 
 // GET
 // posts/:postid
@@ -52,8 +52,13 @@ router.post("/", upload.array('postImages', 10), PostsController.posts_create_po
 router.get("/:postId", PostsController.posts_get_post);
 
 // DELETE
-// posts/postId
+// posts/:postId
 // Deletes a post from the db
-router.delete("/:postId", PostsController.posts_delete_post);
+router.delete("/:postId", checkAuth, PostsController.posts_delete_post);
+
+// PATCH
+// posts/:postId
+// Updates a post in the db
+router.patch("/:postId", checkAuth, PostsController.posts_update_post);
 
 module.exports = router;

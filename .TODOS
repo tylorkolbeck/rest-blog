@@ -1,7 +1,7 @@
 TODO: Refactor the /posts controller code
 TODO: Setup some middleware for handling image uploads on the /posts route
 TODO: Make uploads fold only accessable to certain users or only from the server
-TODO: Ignore jpg in the uploads folder in gitignore 
+
 
 TODO: Create a comment system
     ## Create a comment schema 
@@ -9,13 +9,6 @@ TODO: Create a comment system
     ## create a route to show the comments
     ##
     ##
-
-
-
-
-
-
-
 
 
 REFERENCE: 
@@ -28,8 +21,22 @@ REFERENCE:
         "author":"Test Author",
         "bodyText": "Test body text",
         "description": "Test Description",
-        "tags": ["tags", "tag2","tag3"],
+        "tags": tag1, tag2, tag3,
         "category": "Test Category",
-        "postImages": ["image1.jpg", "image2.jpg", "image3.jpg"],
+        "postImages": file,
         "isPublic": "false"
     }
+
+
+
+function makeid() {
+  var text = "";
+  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+  for (var i = 0; i < 8; i++)
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+  return text;
+}
+
+console.log(makeid());

@@ -16,7 +16,7 @@ exports.user_signup = (req, res, next) => {
             if (err) {
               return res.status(500).json({
                 error: err
-              });
+              })
             } else {
               const user = new User({
                 _id: new mongoose.Types.ObjectId(),
@@ -69,10 +69,9 @@ exports.user_signup = (req, res, next) => {
                         }, 
                         process.env.JWT_KEY, 
                         {
-                            expiresIn: "1h"
+                            expiresIn: "10d"
                         },
                         )
-
                         return res.status(200).json({
                             message: "Login successful",
                             token: token

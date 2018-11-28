@@ -50,7 +50,7 @@ app.disable('x-powered- by')
 
 // Sets up a middleware which every request is funneled through and forwarded to routes
 app.use('/posts', postsRoutes) 
-app.use('/comments', commentsRoutes) 
+// app.use('/comments', commentsRoutes) 
 app.use('/user', userRoutes) 
 
 app.use((req, res, next) => {

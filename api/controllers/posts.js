@@ -1,5 +1,3 @@
-// TODO: add a delete request
-// TODO: add a patch request
 // TODO: add authorize user middleware to post, delete, and patch 
 
 const Post = require("../models/post")
@@ -59,7 +57,6 @@ exports.posts_get_post = (req, res, next) => {
         })
     })
 }
-
 
 // ###################################################### //
 // ###### POST REQUEST TO ENTER A POST INTO THE DB ###### //
@@ -166,4 +163,35 @@ exports.posts_delete_post = (req, res, next) => {
                 error: err
             })
         })
+}
+
+
+// ###################################################### //
+// ###### DELETE REQUEST TO DELETE A POST FROM THE DB ###### //
+exports.posts_update_post = (req, res, next) => {
+    const postId = req.params.postId
+    const updates = {}
+    for (const ops of req.body) {
+        updates[ops.propName] = ops.value
+    }
+
+    Post.update({_id: postId, $set: updates})
+        .select()
+        .exec()
+        .then(result => {
+            res.status(200).json({
+                message: 'Post updated',
+                request: {
+                    type: "GET",
+                    urls: process.env.ROOT_URL + '/posts/' + postId
+                }
+            })
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(500).json({
+                error: err
+            })
+        })
+
 }
