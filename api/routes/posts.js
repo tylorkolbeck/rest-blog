@@ -35,10 +35,17 @@ const upload = multer({
 })
 // ###### END MULTER SETUP ###### //
 
+
+
 // GET
 // posts/
 // GETS all posts
 router.get("/", PostsController.posts_get_all);
+
+// GET
+// posts/:filterTag
+// Gets all posts with a filter
+router.get("/filter/:filterTag", PostsController.posts_filter_tag);
 
 // POST
 // posts/
@@ -60,5 +67,7 @@ router.delete("/:postId", checkAuth, PostsController.posts_delete_post);
 // posts/:postId
 // Updates a post in the db
 router.patch("/:postId", checkAuth, PostsController.posts_update_post);
+
+
 
 module.exports = router;

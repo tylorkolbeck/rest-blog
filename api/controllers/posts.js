@@ -42,13 +42,23 @@ exports.posts_get_all = (req, res, next) => {
 exports.posts_get_post = (req, res, next) => {
     const postId = req.params.postId
     Post.findById(postId)
-    .select('_id userId tags postImages title author bodyText description category createAt isPublic')
+    .select('_id userId tags postImages title author bodyText description category createdAt isPublic')
     .exec()
     .then((doc) => {
-        res.status(200).json({
-            message: "Found the post",
-            doc
-        })
+        if (doc) {
+            console.log(doc.length)
+            res.status(200).json({
+                message: "Found the post",
+                doc
+            })
+        } else {
+            console.log(doc.length)
+            res.status(404).json({
+                message: "Post not found",
+                doc
+            }) 
+        }
+        
     })
     .catch((err)=> {
         res.status(500).json({
@@ -62,7 +72,7 @@ exports.posts_get_post = (req, res, next) => {
 // ###### POST REQUEST TO ENTER A POST INTO THE DB ###### //
 exports.posts_create_post = (req, res, next) => {
     const newPostId = new mongoose.Types.ObjectId()
-
+    console.log(req)
     const post = new Post ({
         _id: newPostId,
         title: req.body.title,
@@ -71,7 +81,7 @@ exports.posts_create_post = (req, res, next) => {
         userId: req.body.userId,
         bodyText: req.body.bodyText,
         description: req.body.description,
-        tags: req.body.tags.split(','),
+        tags: req.body.tags.toLowerCase().split(','),
         category:req.body.category,
         postImages: req.files.map((img)=> {
             return {
@@ -167,7 +177,7 @@ exports.posts_delete_post = (req, res, next) => {
 
 
 // ###################################################### //
-// ###### DELETE REQUEST TO DELETE A POST FROM THE DB ###### //
+// ###### PATCH REQUEST TO UPDATE A POST FROM THE DB ###### //
 exports.posts_update_post = (req, res, next) => {
     const postId = req.params.postId
     const updates = {}
@@ -194,4 +204,36 @@ exports.posts_update_post = (req, res, next) => {
             })
         })
 
+}
+
+
+// ###################################################### //
+// ###### GET REQUEST WITH THAT RETURNS POSTS WITH A CERTAIN TAG ###### //
+exports.posts_filter_tag = (req, res, next) => {
+    const filterTag = req.params.filterTag
+    const lowerCased = filterTag.toLowerCase()
+    Post.find({tags: {$in: lowerCased}})
+        .select('_id userId tags postImages title author bodyText description category createdAt isPublic')
+        .exec()
+        .then((posts) => {
+            // console.log(posts.length)
+            if (posts.length > 0) {
+                res.status(200).json({
+                    message: "Found the post",
+                    posts
+                })
+            } if (post.length == 0) {
+                res.status(404).json({
+                    message: "No posts found with that tag",
+                })
+            }
+            
+        })
+        .catch((err)=> {
+            res.status(500).json({
+                message: "Post not found",
+                error: err
+            })
+        })
+    
 }

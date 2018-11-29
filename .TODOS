@@ -1,3 +1,8 @@
+
+TODO: RETURN POST NOT WHEN FETCHING BY ID
+TODO: RETURN POSTS NOT WHEN FETCHING BY TAG FILTER
+TODO: ADD LINK TO THE TAGS TO FILTER BY TAG
+
 TODO: Refactor the /posts controller code
 TODO: Setup some middleware for handling image uploads on the /posts route
 TODO: Make uploads fold only accessable to certain users or only from the server

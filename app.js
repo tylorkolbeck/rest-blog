@@ -4,6 +4,7 @@ const morgan = require('morgan')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const app = express()
+const cors = require('cors')
 
 // ATTATCH THE ROUTES
 const postsRoutes = require('./api/routes/posts')
@@ -11,8 +12,6 @@ const commentsRoutes = require('./api/routes/comments')
 const userRoutes = require('./api/routes/user')
 
 //Set up mongoose connection
-
-// Mlab DB
 // const mongoConnectionString = `mongodb://${process.env.MLAB_USERNAME}:${process.env.MLAB_PASSWORD}@ds159013.mlab.com:59013/blog_db`
 // Local DB
 const mongoConnectionString = process.env.MONGO_LOCAL_DB // DONT FORGET TO START LOCAL MONGODB
@@ -47,11 +46,13 @@ app.use((req, res, next) => {
 // DISABLE X-Powered-By header.  Prevents attackers from detecting apps running express
 app.disable('x-powered- by')
 
+app.use(cors())
 
 // Sets up a middleware which every request is funneled through and forwarded to routes
 app.use('/posts', postsRoutes) 
-// app.use('/comments', commentsRoutes) 
+// app.use('/comments', commentsRoutes) // FUTURE IMPLEMENTATION
 app.use('/user', userRoutes) 
+// app.use('/filter/:filterTag', postsRoutes) 
 
 app.use((req, res, next) => {
     const error = new Error('Not Found')

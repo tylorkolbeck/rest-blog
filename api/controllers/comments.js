@@ -1,5 +1,4 @@
 const Comment = require("../models/comment")
-const Product = require("../models/product")
 const mongoose = require("mongoose")
 
 // *********  GET ALL COMMENTS CONTROLLER ********* //
