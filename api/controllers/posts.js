@@ -211,6 +211,8 @@ exports.posts_update_post = (req, res, next) => {
 // ###### GET REQUEST WITH THAT RETURNS POSTS WITH A CERTAIN TAG ###### //
 exports.posts_filter_tag = (req, res, next) => {
     const filterTag = req.params.filterTag
+    console.log(filterTag)
+    console.log(filterTag)
     const lowerCased = filterTag.toLowerCase()
     Post.find({tags: {$in: lowerCased}})
         .select('_id userId tags postImages title author bodyText description category createdAt isPublic')
