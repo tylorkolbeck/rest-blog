@@ -45,7 +45,7 @@ router.get("/", PostsController.posts_get_all);
 // GET
 // posts/:filterTag
 // Gets all posts with a filter
-router.get("/filter/:filterTag", PostsController.posts_filter_tag);
+router.get("/filter/", PostsController.posts_filter_tag);
 
 // POST
 // posts/

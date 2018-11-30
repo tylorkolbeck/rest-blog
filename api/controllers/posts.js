@@ -210,21 +210,28 @@ exports.posts_update_post = (req, res, next) => {
 // ###################################################### //
 // ###### GET REQUEST WITH THAT RETURNS POSTS WITH A CERTAIN TAG ###### //
 exports.posts_filter_tag = (req, res, next) => {
-    const filterTag = req.params.filterTag
-    console.log(filterTag)
-    console.log(filterTag)
-    const lowerCased = filterTag.toLowerCase()
-    Post.find({tags: {$in: lowerCased}})
+    console.log('QUERY OBJECT')
+    console.log(req.query)
+
+
+    queryArray =[]
+    
+
+    for (let param in req.query) {
+        queryArray.push(req.query[param])
+        console.log('--', req.query[param])
+    }
+
+    Post.find({tags: {$in: queryArray}})
         .select('_id userId tags postImages title author bodyText description category createdAt isPublic')
         .exec()
         .then((posts) => {
-            // console.log(posts.length)
             if (posts.length > 0) {
                 res.status(200).json({
                     message: "Found the post",
                     posts
                 })
-            } if (post.length == 0) {
+            } else if (post.length == 0) {
                 res.status(404).json({
                     message: "No posts found with that tag",
                 })
