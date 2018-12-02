@@ -72,7 +72,7 @@ exports.posts_get_post = (req, res, next) => {
 // ###### POST REQUEST TO ENTER A POST INTO THE DB ###### //
 exports.posts_create_post = (req, res, next) => {
     const newPostId = new mongoose.Types.ObjectId()
-    console.log(req)
+    // console.log(req)
     const post = new Post ({
         _id: newPostId,
         title: req.body.title,
@@ -83,6 +83,7 @@ exports.posts_create_post = (req, res, next) => {
         description: req.body.description,
         tags: req.body.tags.toLowerCase().split(','),
         category:req.body.category,
+        isPublic:req.body.isPublic,
         postImages: req.files.map((img)=> {
             return {
                 originalname: img.originalname,
@@ -92,7 +93,7 @@ exports.posts_create_post = (req, res, next) => {
                 newFileName: `${newPostId}-${img.filename}`
             }
         }),
-        isPublic:req.body.isPublic
+        
     })
     post.save() // Save the post to the DB then show the results
         .then(result => {

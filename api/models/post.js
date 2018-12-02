@@ -11,7 +11,6 @@ const postSchema = mongoose.Schema({
     tags: {type: Array},
     category: {type: String},
     postImages: {type: Array},
-    category: {type: String, required: true},
     isPublic: {type: Boolean, default: false}
 })
 

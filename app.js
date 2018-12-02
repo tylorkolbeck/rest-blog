@@ -33,9 +33,8 @@ app.use(bodyParser.urlencoded({extended: false})) // parses url encoded bodies
 app.use(bodyParser.json()) // parses json encoded bodies
 // THIS IS FOR CORS HEADER SETTINGS
 app.use((req, res, next) => {
-    res.header('Access-Control_Allow-Origin', '*') // Allow cross server requests
-    res.header('Access-Control-Allow-Headers', 
-    'Origin, X-Requested-With, Content-Type, Accept, Authorization')
+    res.header('Access-Control-Allow-Origin', '*') // Allow cross server requests
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization')
     if (req.method === 'OPTIONS') {
         res.header('Access-Control-Allow-Methods',
         'PUT, POST, PATCH, DELETE, GET')
@@ -43,6 +42,9 @@ app.use((req, res, next) => {
     }
     next() // Allow the request to continue to the routes
 })
+
+
+ 
 // DISABLE X-Powered-By header.  Prevents attackers from detecting apps running express
 app.disable('x-powered- by')
 

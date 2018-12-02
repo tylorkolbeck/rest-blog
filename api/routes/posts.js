@@ -50,7 +50,8 @@ router.get("/filter/", PostsController.posts_filter_tag);
 // POST
 // posts/
 // Adds a post to posts
-// NEED TO ADD AUTHORIZATION
+
+// router.post("/", upload.array('postImages', 10), PostsController.posts_create_post);
 router.post("/", checkAuth, upload.array('postImages', 10), PostsController.posts_create_post);
 
 // GET
