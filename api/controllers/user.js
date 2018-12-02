@@ -44,12 +44,12 @@ exports.user_signup = (req, res, next) => {
   }
 
   exports.user_login = (req, res, next) => {
-    User.find({ email: req.body.email })
+    User.find({ email: req.body.email.toLowerCase() })
         .exec()
         .then(user => {
             if (user.length < 1) {
                 return res.status(401).json({
-                    message: 'No user found'
+                    message: 'Login Failed. Please try again.'
                 })
             }
         
