@@ -35,8 +35,6 @@ const upload = multer({
 })
 // ###### END MULTER SETUP ###### //
 
-
-
 // GET
 // posts/
 // GETS all posts
@@ -50,7 +48,6 @@ router.get("/filter/", PostsController.posts_filter_tag);
 // POST
 // posts/
 // Adds a post to posts
-
 // router.post("/", upload.array('postImages', 10), PostsController.posts_create_post);
 router.post("/", checkAuth, upload.array('postImages', 10), PostsController.posts_create_post);
 
