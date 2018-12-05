@@ -72,7 +72,6 @@ exports.posts_get_post = (req, res, next) => {
 // ###### POST REQUEST TO ENTER A POST INTO THE DB ###### //
 exports.posts_create_post = (req, res, next) => {
     const newPostId = new mongoose.Types.ObjectId()
-    // console.log(req)
     const post = new Post ({
         _id: newPostId,
         title: req.body.title,
@@ -112,6 +111,7 @@ exports.posts_create_post = (req, res, next) => {
                     isPublic:result.isPublic
                 }
             })
+        console.log(post.tags)
         })
         .catch(err => {
             const errorObj = fieldCheck(err) // Build a custom error object to return
@@ -159,7 +159,7 @@ exports.posts_delete_post = (req, res, next) => {
             console.log(result.n === 1)
             if (result.n) {
                 res.status(200).json({
-                    message: `${postId} was deleted from the DB`
+                    message: `${postId} was deleted from the DB`,
                 })
             } else {
                 res.status(500).json({
@@ -183,10 +183,10 @@ exports.posts_update_post = (req, res, next) => {
     const postId = req.params.postId
     const updates = {}
     for (const ops of req.body) {
-        updates[ops.propName] = ops.value
+        updates[ops.propName] = ops.value  
     }
 
-    Post.update({_id: postId, $set: updates})
+    Post.findByIdAndUpdate({_id: postId}, {$set: updates})
         .select()
         .exec()
         .then(result => {
