@@ -21,7 +21,7 @@ router.post("/", contactMsgController.contactMsg_create_message);
 // DELETE
 // msg/:msgId
 // Deletes a message from the db
-// router.delete("/:msgId", checkAuth, PostsController.posts_delete_post);
+router.delete("/:msgId", contactMsgController.contactMsg_delete_post);// TODO: Add authorization.
 
 
 module.exports = router;

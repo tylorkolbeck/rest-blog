@@ -125,32 +125,32 @@ exports.contactMsg_get_msg = (req, res, next) => {
 // }
 
 
-// // ###################################################### //
-// // ###### DELETE REQUEST TO DELETE A POST FROM THE DB ###### //
-// exports.posts_delete_post = (req, res, next) => {
-//     const postId = req.params.postId
-//     Post.deleteOne({_id: postId})
-//         .exec()
-//         .then(result => {
-//             console.log(result.n === 1)
-//             if (result.n) {
-//                 res.status(200).json({
-//                     message: `${postId} was deleted from the DB`,
-//                 })
-//             } else {
-//                 res.status(500).json({
-//                     message: "That post was not found"
-//                 })
-//             }
+// ###################################################### //
+// ###### DELETE REQUEST TO DELETE A POST FROM THE DB ###### //
+exports.contactMsg_delete_post = (req, res, next) => {
+    const msgId = req.params.msgId
+    Message.deleteOne({_id: msgId})
+        .exec()
+        .then(result => {
+            console.log(result.n === 1)
+            if (result.n) {
+                res.status(200).json({
+                    message: `${msgId} was deleted from the DB`,
+                })
+            } else {
+                res.status(500).json({
+                    message: "That message was not found"
+                })
+            }
             
-//         })
-//         .catch(err => {
-//             console.log(err)
-//             res.status(500).json({
-//                 error: err
-//             })
-//         })
-// }
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(500).json({
+                error: err
+            })
+        })
+}
 
 // // ###################################################### //
 // // ###### PATCH REQUEST TO UPDATE A POST FROM THE DB ###### //
