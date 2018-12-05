@@ -6,7 +6,7 @@ const contactMsgController = require('../controllers/contactMsg') // ##########
 // GET
 // contactMsgs/
 // GETS all messages
-// router.get("/", checkAuth, PostsController.posts_get_all);
+router.get("/", contactMsgController.contactMsg_get_all);
 
 // GET
 // contactMsg/:msg

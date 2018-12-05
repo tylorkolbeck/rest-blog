@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const contactMsgSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     userId: {type: String},
-    date: {type: Date, default: Date.now},
+    dateSent: {type: Date, default: Date.now},
     name: {type: String, required: true},
     email: {type: String},
     subject: {type: String},
