@@ -176,13 +176,19 @@ exports.posts_delete_post = (req, res, next) => {
         })
 }
 
-
 // ###################################################### //
 // ###### PATCH REQUEST TO UPDATE A POST FROM THE DB ###### //
 exports.posts_update_post = (req, res, next) => {
     const postId = req.params.postId
     const updates = {}
     for (const ops of req.body) {
+        if (ops.propName === "tags") {
+            // console.log(ops.value.toString().split(','))
+            // let tagsString = ops.value.toString().split()
+            // updates[ops.propName] = tagsString
+            // console.log("TYPEOF", typeof tagsString)
+            console.log(ops.value)
+        }
         updates[ops.propName] = ops.value  
     }
 
