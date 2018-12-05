@@ -69,35 +69,34 @@ exports.contactMsg_create_message = (req, res, next) => {
 }
 
 // ##################################################################### //
-// ###### GET REQUEST TO RETRIEVE A SINGLE POST BY ID FROM THE DB ###### //
-// exports.posts_get_post = (req, res, next) => {
-//     const postId = req.params.postId
-//     Post.findById(postId)
-//     .select('_id userId tags postImages title author bodyText description category createdAt isPublic')
-//     .exec()
-//     .then((doc) => {
-//         if (doc) {
-//             console.log(doc.length)
-//             res.status(200).json({
-//                 message: "Found the post",
-//                 doc
-//             })
-//         } else {
-//             console.log(doc.length)
-//             res.status(404).json({
-//                 message: "Post not found",
-//                 doc
-//             }) 
-//         }
+// ###### GET REQUEST TO RETRIEVE A SINGLE MESSAGE BY ID FROM THE DB ###### //
+exports.contactMsg_get_msg = (req, res, next) => {
+    const msgId = req.params.msgId
+    Message.findById(msgId)
+    .select()
+    .exec()
+    .then((doc) => {
+        if (doc._id) {
+            console.log(doc.length)
+            res.status(200).json({
+                message: "Message found.",
+                doc
+            })
+        } else {
+            console.log(doc.length)
+            res.status(404).json({
+                message: "Message not found",
+            }) 
+        }
         
-//     })
-//     .catch((err)=> {
-//         res.status(500).json({
-//             message: "Post not found",
-//             error: err
-//         })
-//     })
-// }
+    })
+    .catch((err)=> {
+        res.status(500).json({
+            message: "Post not found",
+            error: err
+        })
+    })
+}
 
 
 
