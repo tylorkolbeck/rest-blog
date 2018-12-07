@@ -127,7 +127,7 @@ exports.contactMsg_get_msg = (req, res, next) => {
 
 // ###################################################### //
 // ###### DELETE REQUEST TO DELETE A POST FROM THE DB ###### //
-exports.contactMsg_delete_post = (req, res, next) => {
+exports.contactMsg_delete_msg = (req, res, next) => {
     const msgId = req.params.msgId
     Message.deleteOne({_id: msgId})
         .exec()
@@ -152,42 +152,35 @@ exports.contactMsg_delete_post = (req, res, next) => {
         })
 }
 
-// // ###################################################### //
-// // ###### PATCH REQUEST TO UPDATE A POST FROM THE DB ###### //
-// exports.posts_update_post = (req, res, next) => {
-//     const postId = req.params.postId
-//     const updates = {}
-//     for (const ops of req.body) {
-//         if (ops.propName === "tags") {
-//             // console.log(ops.value.toString().split(','))
-//             // let tagsString = ops.value.toString().split()
-//             // updates[ops.propName] = tagsString
-//             // console.log("TYPEOF", typeof tagsString)
-//             console.log(ops.value)
-//         }
-//         updates[ops.propName] = ops.value  
-//     }
+// ###################################################### //
+// ###### PATCH REQUEST TO UPDATE A POST FROM THE DB ###### //
+exports.contactMsg_patch_msg = (req, res, next) => {
+    const msgId = req.params.msgId
+    const updates = {}
+    for (const ops of req.body) {
+        updates[ops.propName] = ops.value  
+    }
 
-//     Post.findByIdAndUpdate({_id: postId}, {$set: updates})
-//         .select()
-//         .exec()
-//         .then(result => {
-//             res.status(200).json({
-//                 message: 'Post updated',
-//                 request: {
-//                     type: "GET",
-//                     urls: process.env.ROOT_URL + '/posts/' + postId
-//                 }
-//             })
-//         })
-//         .catch(err => {
-//             console.log(err)
-//             res.status(500).json({
-//                 error: err
-//             })
-//         })
+    Message.findByIdAndUpdate({_id: msgId}, {$set: updates})
+        .select()
+        .exec()
+        .then(result => {
+            res.status(200).json({
+                message: 'Message updated',
+                request: {
+                    type: "GET",
+                    urls: process.env.ROOT_URL + '/contactMsgs'
+                }
+            })
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(500).json({
+                error: err
+            })
+        })
 
-// }
+}
 
 
 // // ###################################################### //
