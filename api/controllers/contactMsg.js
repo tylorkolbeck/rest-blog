@@ -43,6 +43,7 @@ exports.contactMsg_create_message = (req, res, next) => {
         subject: req.body.subject,
         body: req.body.body, 
     })
+
     message.save() // Save the post to the DB then show the results
         .then(result => {
             res.status(201).json({
@@ -52,7 +53,7 @@ exports.contactMsg_create_message = (req, res, next) => {
                     name: result.name,
                     email: result.email,
                     subject: result.subject,
-                    body: result.body
+                    body: result.message
                 }
             })
         console.log(message)

@@ -205,7 +205,7 @@ exports.posts_update_post = (req, res, next) => {
             })
         })
         .catch(err => {
-            console.log(err)
+            console.log('hhjghjghj',err)
             res.status(500).json({
                 error: err
             })
