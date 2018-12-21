@@ -24,6 +24,7 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 // ######### Middleware ########
+app.use(cors())
 app.use(morgan('dev')) // logs incoming requests
 // https://www.npmjs.com/package/body-parser
 
@@ -49,13 +50,11 @@ app.use((req, res, next) => {
     }
     next() // Allow the request to continue to the routes
 })
-
-
  
 // DISABLE X-Powered-By header.  Prevents attackers from detecting apps running express
 app.disable('x-powered-by')
 
-app.use(cors())
+
 
 // Sets up a middleware which every request is funneled through and forwarded to routes
 app.use('/posts', postsRoutes) 
