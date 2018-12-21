@@ -13,9 +13,9 @@ const userRoutes = require('./api/routes/user')
 const contactMsgRoutes = require('./api/routes/contactMsg')
 
 //Set up mongoose connection
-// const mongoConnectionString = `mongodb://${process.env.MLAB_USERNAME}:${process.env.MLAB_PASSWORD}@ds159013.mlab.com:59013/blog_db`
+const mongoConnectionString = `mongodb://${process.env.MLAB_USERNAME}:${process.env.MLAB_PASSWORD}@ds159013.mlab.com:59013/blog_db`
 // Local DB
-const mongoConnectionString = process.env.MONGO_LOCAL_DB // DONT FORGET TO START LOCAL MONGODB
+// const mongoConnectionString = process.env.MONGO_LOCAL_DB // DONT FORGET TO START LOCAL MONGODB
 
 mongoose.connect(mongoConnectionString, { useNewUrlParser: true });
 mongoose.Promise = global.Promise;
