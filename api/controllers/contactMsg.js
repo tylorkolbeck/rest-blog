@@ -14,13 +14,13 @@ exports.contactMsg_get_all = (req, res, next) => {
                 contactMsg: docs.map(doc => {
                     return {
                         _id: doc.id,
-                        dateSent: doc.dateSent,
-                        name: doc.name,
-                        email: doc.email,
-                        subject: doc.subject,
-                        body: doc.body,
-                        userId: doc.userId,
-                        wasRead: doc.wasRead
+                        // dateSent: doc.dateSent,
+                        // name: doc.name,
+                        // email: doc.email,
+                        // subject: doc.subject,
+                        // body: doc.body,
+                        // userId: doc.userId,
+                        // wasRead: doc.wasRead
                     }
                 })
             })

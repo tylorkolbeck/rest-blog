@@ -9,3 +9,5 @@ nodemon.json
 /uploads/postImages/*.jpeg
 
 ecosystem.config.js
+
+my-website.pem
