@@ -8,6 +8,6 @@ nodemon.json
 /uploads/postImages/*.jpg
 /uploads/postImages/*.jpeg
 
-ecosystem.config.js
+
 
 my-website.pem
