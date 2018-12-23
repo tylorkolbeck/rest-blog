@@ -1,7 +1,7 @@
 module.exports = {
   apps : [{
     name: 'API',
-    script: 'app.js',
+    script: 'server.js',
     key: 'my-website.pem',
 
     // Options reference: https://pm2.io/doc/en/runtime/reference/ecosystem-file/
@@ -26,7 +26,7 @@ module.exports = {
       ref  : 'origin/master',
       repo : 'https://github.com/tylorkolbeck/rest-blog.git',
       path : '/home/bitnami/apps/rest-blog',
-      'post-deploy' : 'mkdir -p logs && touch logs/all-logs.log && npm install && pm2 reload ecosystem.config.js --env production'
+      'post-deploy' : 'sudo npm install && sudo pm2 reload home/bitnami/apps/rest-blog/ecosystem.config.js --env production'
     }
   }
 };
