@@ -15,9 +15,6 @@ module.exports = {
     },
     env_production: {
       NODE_ENV: 'production',
-      MONGO_LOCAL_DB: "mongodb://admin:1Rednose!!!0916@ds159013.mlab.com:59013/blog_db",
-      MLAB_USERNAME: "tylorkolbeck",
-      MLAB_PASSWORD: "1Rednose"
     }
   }],
 
