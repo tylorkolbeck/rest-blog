@@ -1,7 +1,7 @@
 module.exports = {
   apps : [{
     name: 'API',
-    script: 'rest-blog/server.js',
+    script: '~/home/bitnami/apps/rest-blog/server.js',
     key: 'my-website.pem',
 
     // Options reference: https://pm2.io/doc/en/runtime/reference/ecosystem-file/
