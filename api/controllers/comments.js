@@ -48,12 +48,12 @@ exports.comments_create_comment = (req, res, next) => {
       res.status(200).json({
         message: "Comment Added",
         _id: result._id,
-        discussion_id: result.discussion_id,
-        posted: result.posted,
-        slug: result.slug,
-        fullSlug: result.fullSlug,
-        author: result.author,
-        text: result.text
+        // discussion_id: result.discussion_id,
+        // posted: result.posted,
+        // slug: result.slug,
+        // fullSlug: result.fullSlug,
+        // author: result.author,
+        // text: result.text
       })
     })
     .catch(err => {
