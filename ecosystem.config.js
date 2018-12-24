@@ -26,7 +26,7 @@ module.exports = {
       ref  : 'origin/master',
       repo : 'https://github.com/tylorkolbeck/rest-blog.git',
       path : '/home/bitnami/apps/rest-blog',
-      'post-deploy' : 'npm install && pm2 reload ~/apps/ecosystem.config.js --env production'
+      'post-deploy' : 'npm install && pm2 reload ~/home/apps/ecosystem.config.js --env production'
     }
   }
 };
