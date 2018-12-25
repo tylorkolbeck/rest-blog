@@ -1,10 +1,12 @@
 {\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf100
 {\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Monaco;\f2\fnil\fcharset0 Menlo-Regular;
-}
+\f3\fnil\fcharset0 HelveticaNeue;}
 {\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red255\green255\blue255;\red35\green255\blue6;
-\red0\green0\blue0;\red0\green0\blue0;\red0\green0\blue0;}
+\red0\green0\blue0;\red0\green0\blue0;\red52\green52\blue52;\red0\green0\blue0;\red52\green52\blue52;
+}
 {\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c100000\c100000\c100000;\cssrgb\c0\c100000\c0;
-\cssrgb\c0\c0\c0\c84314;\cssrgb\c0\c0\c0\c4706;\csgray\c0;}
+\cssrgb\c0\c0\c0\c84314;\cssrgb\c0\c0\c0\c4706;\cssrgb\c26667\c26667\c26667;\csgray\c0;\cssrgb\c26667\c26667\c26667;
+}
 \margl1440\margr1440\vieww10800\viewh8400\viewkind0
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
@@ -35,16 +37,46 @@ Kill all instances of node:\
 - After committing all changes to the repository use the update command to sync the repo with the EC2 server. \
 - Connect via SSH:\
 \
-\
-\
+\pard\pardeftab720\sl300\partightenfactor0
+
+\f3\fs26 \cf7 \cb3 \outl0\strokewidth0 \strokec7 ec2-54-148-26-236.us-west-2.compute.amazonaws.com
+\f1\fs28 \cf2 \cb3 \outl0\strokewidth0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf2 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
-\f2\fs22 \cf7 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 	ssh -i ~/.ssh/my-website.pem ubuntu@ec2-54-184-193-9.us-	west-2.compute.amazonaws.com\
+\f2\fs22 \cf8 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 	ssh -i ~/.ssh/my-website.pem ubuntu@
+\f3\fs26 \cf9 \cb3 \expnd0\expndtw0\kerning0
+\CocoaLigature1 ec2-54-148-26-236.us-west-2.compute.amazonaws.com
+\f2\fs22 \cf8 \cb1 \kerning1\expnd0\expndtw0 \CocoaLigature0 \
 \
 To kill all:\
 	pm2 kill <instance name>\
 \
 To update:\
 	pm2 deploy production update\
+\
+\
+KEY\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf8 MIIC3jCCAcYCAQAwgZgxCzAJBgNVBAYTAlVTMRMwEQYDVQQIDApDYWxpZm9ybmlh\
+MRIwEAYDVQQHDAlTYW4gRGllZ28xGTAXBgNVBAoMEHRoZWRhaWx5ZnVuYy5jb20x\
+HTAbBgNVBAMMFHd3dy50aGVkYWlseWZ1bmMuY29tMSYwJAYJKoZIhvcNAQkBFhd0\
+eWxvci5rb2xiZWNrQGdtYWlsLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCC\
+AQoCggEBAPJoXUBWsLVxrEYJXbnanTYq9DAwYKz+MPzVjcmBOt41kWibTHZotny3\
+gNLcMj7u7VIi6ZNVAYwGmhQs0KCr22kUu93UowJL1o4Bd7kKFQdtFUF0BDfYtTDG\
+MPNhtj8kWoyx3/5DhG2KCNOkrAtkXA+mErih/8hNFrVu4ncY1Q3GI1q+VSJhNB4e\
+bTd4XAT0IXWdMXofRwFK+pEFFAtepIChth5tQn0lEF1L4Gtv5TFHBIfni6N9pMSO\
+SoLegoXRHTiLXWuN4eLsOSIbRQ5vpqGs33/UkFSORji5QOeQpbb4Fd7y0cT4aw8F\
+fRvMqC8eWkydQczNkfpjnDJ1y8byKXsCAwEAAaAAMA0GCSqGSIb3DQEBCwUAA4IB\
+AQAhXmj1MPkJqoBbwl+3S5qOcCeBj4XWX8RDbKAjE+QXRY5I723GwExUzqD+2V31\
+2AJJaIpLaRjOcrWLrPjtv1eugnRPUyX+9djNUjNawOQcWDtUmJypy1PedVdMAB/t\
+K2pONirS6WsYWIBm3fhuYBhgeQ8QwAdLp4anlSanXYXHLQFUNiesIJYq0EbZRkuD\
+7d/LaBwMN2THO6SYB/9/MTlLQW3g7P7hXo2Wo8fww68X6Cc5qIahomThkx49DRvE\
+jeAchwcXHscTkTIc6xsRXNTuWiaRdOfBZO26JY86kZO4/NDYB7OQ02fHPMI6IXcr\
+ZLm1Y/CVvy+HjwpsuQ6YaB9m\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf8 \
 \
 }
