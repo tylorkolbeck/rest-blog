@@ -9,7 +9,7 @@ exports.posts_add_image = (req, res, next) => {
         //     return res.status(422).send({errors: [{title: 'Image Upload error', detail: err.message + process.env}]})
         // }
 
-            return res.json({'imageUrl': req.file.location})
+            return res.json({'imageUrl': req.files})
    
 }
 
