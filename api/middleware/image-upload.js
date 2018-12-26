@@ -20,7 +20,7 @@ const upload = multer({
         bucket: 'tylorkolbeck.com',
         acl: 'public-read', 
         metadata: function(req, file, cb) {
-            cb(null, {fieldName: file.fieldName})
+            cb(null, {fieldName: 'file.fieldName'})
         },
         key: function(req, file, cb) {
             cb(null, Date.now().toString())
