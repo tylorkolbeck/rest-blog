@@ -5,9 +5,9 @@ const mongoose = require("mongoose");
 
 exports.posts_add_image = (req, res, next) => {
     
-        if (err) {
-            return res.status(422).send({errors: [{title: 'Image Upload error', detail: err.message + process.env}]})
-        }
+        // if (err) {
+        //     return res.status(422).send({errors: [{title: 'Image Upload error', detail: err.message + process.env}]})
+        // }
 
             return res.json({'imageUrl': req.file.location})
    
