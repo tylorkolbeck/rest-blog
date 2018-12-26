@@ -55,7 +55,7 @@ router.get("/filter/", PostsController.posts_filter_tag);
 router.post("/", checkAuth, upload.array('photos', 3), PostsController.posts_create_post);
 
 // router.post("/image-upload", checkAuth, function(req, res) {
-    router.post("/image-upload", upload.single('image'), PostsController.posts_add_image) 
+    router.post("/image-upload", upload.array('postImages', 20), PostsController.posts_add_image) 
 //     function(req, res) {
 //     singleUpload(req, res, function(err, some) {
 //         if (err) {
