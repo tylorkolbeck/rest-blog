@@ -11,9 +11,6 @@ aws.config.update({
     region: "us-west-2"
 })
 
-aws.config.update({region: 'us-west-2'})
-let iam = new aws.IAM({apiVersion: '2010-05-08'})
-
 const s3 = new aws.S3()
 
 
