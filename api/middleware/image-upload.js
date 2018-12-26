@@ -13,7 +13,7 @@ const aws = require('aws-sdk')
 
 // aws.config.update({region: 'us-west-2'})
 // let iam = new aws.IAM({apiVersion: '2010-05-08'})
-aws.config.loadFromPath('../../.aws/config.json')
+aws.config.loadFromPath('../config.json')
 const s3 = new aws.S3()
 
 
