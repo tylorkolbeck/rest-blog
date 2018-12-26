@@ -1,5 +1,5 @@
 const multer = require('multer')
-const multers3 = require('multer-s3')
+const multerS3 = require('multer-s3')
 const aws = require('aws-sdk')
 
 
@@ -15,12 +15,12 @@ const s3 = new aws.S3()
 
 
 const upload = multer({
-    storage: multers3({
+    storage: multerS3({
         s3: s3,
         bucket: 'tylorkolbeck.com',
-        // acl: 'public-read', 
+        acl: 'public-read', 
         metadata: function(req, file, cb) {
-            cb(null, {fieldName: 'TEST_FILE_NAME'})
+            cb(null, {fieldName: file.fieldName})
         },
         key: function(req, file, cb) {
             cb(null, Date.now().toString())
