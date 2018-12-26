@@ -22,7 +22,7 @@ module.exports = {
     production : {
       key  : 'my-website.pem',
       user : 'ubuntu',
-      host : 'ec2-54-184-193-9.us-west-2.compute.amazonaws.com',
+      host : 'ec2-54-148-26-236.us-west-2.compute.amazonaws.com',
       ref  : 'origin/master',
       repo : 'https://github.com/tylorkolbeck/rest-blog.git',
       path : '/home/bitnami/apps/rest-blog',
