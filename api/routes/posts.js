@@ -2,37 +2,38 @@
 const express = require("express");
 const router = express.Router();
 const checkAuth = require('../middleware/check-auth')
-const multer = require('multer')
-const multers3 = require('multer-s3')
-const aws = require('aws-sdk')
-
+// const multer = require('multer')
+// const multers3 = require('multer-s3')
+// const aws = require('aws-sdk')
 const PostsController = require('../controllers/posts')
 
+const upload = require('../middleware/image-upload')
+const singleUpload = upload.single('image')
 
-// ## THIS CONTROLS THE IMAGE UPLOAD ## //
+// // ## THIS CONTROLS THE IMAGE UPLOAD ## //
 
-aws.config.update({
-    secretAccessKey: process.env.SECRET_ACCESS_KEY,
-    accessKeyId: process.env.ACCESS_KEY_ID,
-    region: "us-west-2"
-})
+// aws.config.update({
+//     secretAccessKey: process.env.SECRET_ACCESS_KEY,
+//     accessKeyId: process.env.ACCESS_KEY_ID,
+//     region: "us-west-2"
+// })
 
-const s3 = new aws.S3()
+// const s3 = new aws.S3()
 
 
-const upload = multer({
-    storage: multers3({
-        s3: s3,
-        bucket: 'tylorkolbeck.com',
-        acl: 'public-read',
-        metadata: function(req, file, cb) {
-            cb(null, {fieldName: file.fieldName})
-        },
-        key: function(req, file, cb) {
-            cb(null, Date.now().toString())
-        }
-    })
-})
+// const upload = multer({
+//     storage: multers3({
+//         s3: s3,
+//         bucket: 'tylorkolbeck.com',
+//         acl: 'public-read',
+//         metadata: function(req, file, cb) {
+//             cb(null, {fieldName: file.fieldName})
+//         },
+//         key: function(req, file, cb) {
+//             cb(null, Date.now().toString())
+//         }
+//     })
+// })
 
 // const singleUpload = upload.single('image')
 // ###### END MULTER SETUP ###### //
@@ -52,6 +53,16 @@ router.get("/filter/", PostsController.posts_filter_tag);
 // Adds a post to posts
 // router.post("/", upload.array('postImages', 10), PostsController.posts_create_post);
 router.post("/", checkAuth, upload.array('photos', 3), PostsController.posts_create_post);
+
+router.post("/image-upload", function(req, res) {
+    singleUpload(req, res, function(err, some) {
+        if (err) {
+            return res.status(422).send({errors: [{title: 'Image Upload error', detail: err.message}]})
+        }
+
+        return res.json({'imageUrl': req.file.location})
+    })
+})
 
 // GET
 // posts/:postid
