@@ -18,7 +18,7 @@ const upload = multer({
     storage: multers3({
         s3: s3,
         bucket: 'tylorkolbeck.com',
-        acl: 'public-read',
+        // acl: 'public-read', 
         metadata: function(req, file, cb) {
             cb(null, {fieldName: 'TEST_FILE_NAME'})
         },
