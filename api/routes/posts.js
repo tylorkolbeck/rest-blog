@@ -62,7 +62,7 @@ router.post("/image-upload", checkAuth, function(req, res) {
 
         return res.json({'imageUrl': req.file.location})
     })
-})
+}, console.log('All Done'))
 
 // GET
 // posts/:postid
