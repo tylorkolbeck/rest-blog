@@ -12,30 +12,13 @@ const PostsController = require('../controllers/posts')
 // ## THIS CONTROLS THE IMAGE UPLOAD ## //
 
 aws.config.update({
-    secretAccessKey: "RCtfDEfNb2zgkLBb3PtbsjcwgPsfXk8+a8z3ckyt",
-    accessKeyId: "AKIAJNCQ2A2K4J76JO6Q",
+    secretAccessKey: process.env.SECRET_ACCESS_KEY,
+    accessKeyId: process.env.ACCESS_KEY_ID,
     region: "us-west-2"
 })
 
 const s3 = new aws.S3()
 
-// const storage = multer.diskStorage({
-//     destination: function(req, file, cb) {
-//         cb(null, './uploads/postImages')
-//     },
-//     filename: function(req, file, cb) {
-//         cb(null, file.originalname)
-//         // cb(null, new Date().toISOString() + file.originalname)
-//     }
-// })
-
-// const fileFilter = (req, file, cb) => {
-//     if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
-//         cb(null, true)
-//     } else {
-//         cb(new Error('File type not accepted.'), false)
-//     }
-// }
 
 const upload = multer({
     storage: multers3({
@@ -50,6 +33,8 @@ const upload = multer({
         }
     })
 })
+
+// const singleUpload = upload.single('image')
 // ###### END MULTER SETUP ###### //
 
 // GET
@@ -66,7 +51,7 @@ router.get("/filter/", PostsController.posts_filter_tag);
 // posts/
 // Adds a post to posts
 // router.post("/", upload.array('postImages', 10), PostsController.posts_create_post);
-router.post("/", checkAuth, upload.single('postImages'), PostsController.posts_create_post);
+router.post("/", checkAuth, upload.array('photos', 3), PostsController.posts_create_post);
 
 // GET
 // posts/:postid
