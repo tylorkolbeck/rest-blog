@@ -5,12 +5,15 @@ const aws = require('aws-sdk')
 
 // ## THIS CONTROLS THE IMAGE UPLOAD ## //
 
-// aws.config.update({
+// aws.config.update({np
 //     secretAccessKey: process.env.SECRET_ACCESS_KEY,
 //     accessKeyId: process.env.ACCESS_KEY_ID,
 //     region: "us-west-2"
 // })
 
+// aws.config.update({region: 'us-west-2'})
+// let iam = new aws.IAM({apiVersion: '2010-05-08'})
+aws.config.loadFromPath('../../.aws/config.json')
 const s3 = new aws.S3()
 
 
