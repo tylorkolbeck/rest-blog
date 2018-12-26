@@ -57,7 +57,7 @@ router.post("/", checkAuth, upload.array('photos', 3), PostsController.posts_cre
 router.post("/image-upload", function(req, res) {
     singleUpload(req, res, function(err, some) {
         if (err) {
-            return res.status(422).send({errors: [{title: 'Image Upload error, wtf', detail: err.message, access_key: process.env.ACCESS_KEY_ID}]})
+            return res.status(422).send({errors: [{title: 'Image Upload error, key', detail: err.message + process.env.ACCESS_KEY_ID}]})
         }
 
         return res.json({'imageUrl': req.file.location})
