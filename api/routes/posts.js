@@ -54,7 +54,7 @@ router.get("/filter/", PostsController.posts_filter_tag);
 // router.post("/", upload.array('postImages', 10), PostsController.posts_create_post);
 router.post("/", checkAuth, upload.array('photos', 3), PostsController.posts_create_post);
 
-router.post("/image-upload", function(req, res) {
+router.post("/image-upload", checkAuth, function(req, res) {
     singleUpload(req, res, function(err, some) {
         if (err) {
             return res.status(422).send({errors: [{title: 'Image Upload error', detail: err.message + process.env}]})
