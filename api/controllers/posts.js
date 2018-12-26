@@ -4,13 +4,13 @@ const Post = require("../models/post")
 const mongoose = require("mongoose");
 
 exports.posts_add_image = (req, res, next) => {
-    singleUpload(req, res, function(err, some) {
+    
         if (err) {
             return res.status(422).send({errors: [{title: 'Image Upload error', detail: err.message + process.env}]})
         }
 
             return res.json({'imageUrl': req.file.location})
-    })
+   
 }
 
 // ######################################################### //
