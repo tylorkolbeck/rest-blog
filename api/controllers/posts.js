@@ -1,7 +1,30 @@
 // TODO: add authorize user middleware to post, delete, and patch 
 
 const Post = require("../models/post")
-const mongoose = require("mongoose");
+const aws = require('aws-sdk')
+const mongoose = require("mongoose")
+
+aws.config.update({
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    region: "us-west-2"
+})
+
+const s3 = new aws.S3()
+
+exports.post_remove_image = (req, res, next) => {
+    const img = req.params.img
+
+    let params = {
+        Bucket: 'tylorkolbeck.com',
+        Key: img,
+      }
+  
+      s3.deleteObject(params, function(err, data) {
+        if (err) console.log(err, err.stack)
+        else console.log('Image Deleted')
+      })
+}
 
 
 // ######################################################### //

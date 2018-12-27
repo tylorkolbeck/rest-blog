@@ -59,6 +59,11 @@ router.post("/", checkAuth, PostsController.posts_create_post);
 // Adds a image to S3 bucket
 router.post("/image-upload", upload.array('postImages', 20), PostsController.posts_add_image) 
 
+// POST
+// posts/image-delete/:img
+// removes an image from the s3 bucket
+router.post("/image-delete/:img", checkAuth, PostsController.post_remove_image)
+
 // GET
 // posts/:postid
 // gets a specific post from the db
