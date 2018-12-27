@@ -35,7 +35,9 @@ exports.posts_add_image = (req, res, next) => {
             }
         })
     })
-    
+
+    upload.array('postImages', 20)
+
     return res.json({'imageUrl': req.files})
 }
 
