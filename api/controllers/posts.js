@@ -105,6 +105,7 @@ exports.posts_get_post = (req, res, next) => {
 // ###### POST REQUEST TO ENTER A POST INTO THE DB ###### //
 exports.posts_create_post = (req, res, next) => {
     const newPostId = new mongoose.Types.ObjectId()
+    console.log('this is the request body: ', req.body)
     const post = new Post ({
         _id: newPostId,
         title: req.body.title,
@@ -113,7 +114,7 @@ exports.posts_create_post = (req, res, next) => {
         userId: req.body.userId,
         bodyText: req.body.bodyText,
         description: req.body.description,
-        tags: req.body.tags.toLowerCase().split(','),
+        tags: req.body.tags,
         category:req.body.category,
         isPublic:req.body.isPublic,
         postImages: req.body.postImages
@@ -139,9 +140,8 @@ exports.posts_create_post = (req, res, next) => {
         })
         .catch(err => {
             const errorObj = fieldCheck(err) // Build a custom error object to return
-            console.log(err)
             res.status(500).json({
-                message: 'Error',
+                message: 'Error FJKODSNFLKSJDKFLJASDKL:Fjkl;asJFL',
                 ...errorObj
 
             })
