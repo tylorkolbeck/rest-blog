@@ -105,7 +105,7 @@ exports.posts_get_post = (req, res, next) => {
 // ###### POST REQUEST TO ENTER A POST INTO THE DB ###### //
 exports.posts_create_post = (req, res, next) => {
     const newPostId = new mongoose.Types.ObjectId()
-    console.log('this is the request body: ', req.body)
+    console.log('this is the request body: ', req)
     const post = new Post ({
         _id: newPostId,
         title: req.body.title,
