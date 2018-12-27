@@ -52,19 +52,12 @@ router.get("/filter/", PostsController.posts_filter_tag);
 // posts/
 // Adds a post to posts
 // router.post("/", upload.array('postImages', 10), PostsController.posts_create_post);
-router.post("/", checkAuth, upload.array('postImages', 20), PostsController.posts_create_post);
+router.post("/", checkAuth, PostsController.posts_create_post);
 
-// router.post("/image-upload", checkAuth, function(req, res) {
-    router.post("/image-upload", upload.array('postImages', 20), PostsController.posts_add_image) 
-//     function(req, res) {
-//     singleUpload(req, res, function(err, some) {
-//         if (err) {
-//             return res.status(422).send({errors: [{title: 'Image Upload error', detail: err.message + process.env}]})
-//         }
-
-//         return res.json({'imageUrl': req.file.location})
-//     })
-// })
+// POST
+// posts/image_upload
+// Adds a image to S3 bucket
+router.post("/image-upload", PostsController.posts_add_image) 
 
 // GET
 // posts/:postid
