@@ -57,7 +57,7 @@ router.post("/", checkAuth, PostsController.posts_create_post);
 // POST
 // posts/image_upload
 // Adds a image to S3 bucket
-router.post("/image-upload", PostsController.posts_add_image) 
+router.post("/image-upload", upload.array('postImages', 20), PostsController.posts_add_image) 
 
 // GET
 // posts/:postid

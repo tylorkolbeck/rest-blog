@@ -30,6 +30,4 @@ const upload = multer({
     })
 })
 
-upload.array('postImages', 20)
-
 module.exports = upload
