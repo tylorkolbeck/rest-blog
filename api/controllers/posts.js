@@ -141,7 +141,6 @@ exports.posts_create_post = (req, res, next) => {
             const errorObj = fieldCheck(err) // Build a custom error object to return
             console.log(err)
             res.status(500).json({
-                payload: 'test' + req.body,
                 message: 'Error',
                 ...errorObj
 
