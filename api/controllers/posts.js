@@ -114,7 +114,7 @@ exports.posts_create_post = (req, res, next) => {
         userId: req.body.userId,
         bodyText: req.body.bodyText,
         description: req.body.description,
-        tags: req.body.tags.toLowerCase().split(','),
+        tags: req.body.tags,
         category:req.body.category,
         isPublic:req.body.isPublic,
         postImages: req.body.postImages
