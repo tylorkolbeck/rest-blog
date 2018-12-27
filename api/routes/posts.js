@@ -62,7 +62,7 @@ router.post("/image-upload", upload.array('postImages', 20), PostsController.pos
 // POST
 // posts/image-delete/:img
 // removes an image from the s3 bucket
-router.post("/image-delete/:img", checkAuth, PostsController.post_remove_image)
+router.get("/image-delete/:img", checkAuth, PostsController.post_remove_image)
 
 // GET
 // posts/:postid
