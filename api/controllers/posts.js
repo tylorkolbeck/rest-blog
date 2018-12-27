@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 // ######################################################### //
 // ###### POST REQUEST TO ADD AN IMAGE TO S3 BUCKET ###### //
 exports.posts_add_image = (req, res, next) => {
-    if (err) {
+    if (res.err) {
         return res.end("Error uploading file.")
     }
     return res.json({'imageUrl': req.files})
