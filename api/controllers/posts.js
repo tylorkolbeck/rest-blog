@@ -116,15 +116,7 @@ exports.posts_create_post = (req, res, next) => {
         tags: req.body.tags.toLowerCase().split(','),
         category:req.body.category,
         isPublic:req.body.isPublic,
-        postImages: req.files.map((img)=> {
-            return {
-                originalname: img.originalname,
-                size: img.size,
-                mimetype: img.mimetype,
-                destination: img.destination,
-                newFileName: `${newPostId}-${img.filename}`
-            }
-        }),
+        postImages: req.body.postImages
         
     })
     post.save() // Save the post to the DB then show the results
@@ -144,12 +136,12 @@ exports.posts_create_post = (req, res, next) => {
                     isPublic:result.isPublic
                 }
             })
-        console.log(post.tags)
         })
         .catch(err => {
             const errorObj = fieldCheck(err) // Build a custom error object to return
             console.log(err)
             res.status(500).json({
+                payload: req.body,
                 message: 'Error',
                 ...errorObj
 
