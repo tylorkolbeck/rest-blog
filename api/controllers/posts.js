@@ -17,7 +17,7 @@ exports.post_remove_image = (req, res, next) => {
 
     let params = {
         Bucket: 'tylorkolbeck.com',
-        Key: 'imageUploads' + img,
+        Key: 'imageUploads/' + img,
       }
   
       s3.deleteObject(params, function(err, data) {
