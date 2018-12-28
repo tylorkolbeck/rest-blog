@@ -11,7 +11,6 @@ aws.config.update({
 })
 
 const s3 = new aws.S3()
-
 exports.post_remove_image = (req, res, next) => {
     const img = req.params.img
 
@@ -21,8 +20,8 @@ exports.post_remove_image = (req, res, next) => {
       }
   
       s3.deleteObject(params, function(err, data) {
-        if (err) console.log(err, err.stack)
-        else console.log('Image Deleted')
+        if (err) res.json({'error': 'Error deleting the image.'})
+        else res.json({'message': 'Image Deleted!'})
       })
 }
 
