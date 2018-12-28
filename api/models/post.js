@@ -10,7 +10,7 @@ const postSchema = mongoose.Schema({
     description: {type: String},
     tags: {type: Array},
     category: {type: String},
-    // postImages: {type: Array},
+    postImages: {type: Array},
     isPublic: {type: Boolean, default: false}
 })
 
