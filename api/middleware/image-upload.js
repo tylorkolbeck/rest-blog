@@ -23,8 +23,8 @@ const upload = multer({
             cb(null, {fieldName: 'file.fieldName'})
         },
         key: function(req, file, cb) {
-            let newFileName = Date.now().toString() + "-" + file.originalname
-            let fullPath = 'imageUploads/' + newFileName
+            // let newFileName = Date.now().toString() + "-" + file.originalname
+            let fullPath = 'imageUploads/' + file.originalname
             cb(null, fullPath)
         }
     })
