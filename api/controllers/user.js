@@ -75,7 +75,7 @@ exports.user_signup = (req, res, next) => {
                         process.env.JWT_KEY, 
                         {
                             expiresIn: "10d"
-                        },
+                        }
                         )
                       
                         return res.status(200).json({

@@ -140,8 +140,8 @@ exports.posts_create_post = (req, res, next) => {
         .catch(err => {
             const errorObj = fieldCheck(err) // Build a custom error object to return
             res.status(500).json({
-                message: 'Error',
-                ...errorObj
+                message: 'Error'
+              
 
             })
         })
