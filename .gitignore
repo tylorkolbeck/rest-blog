@@ -13,3 +13,6 @@ nodemon.json
 my-website.pem
 
 EC2_notes.rtf
+
+ecosystem.config.js
+ecosystem.config2.js
