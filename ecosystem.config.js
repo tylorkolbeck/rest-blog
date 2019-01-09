@@ -25,8 +25,8 @@ module.exports = {
         host : '142.93.95.14',
         ref  : 'origin/master',
         repo : 'https://github.com/tylorkolbeck/rest-blog.git',
-        path : '/rest-blog',
-        'post-deploy' : 'npm install && pm2 reload server'
+        path : '/home/ubuntu/rest-blog',
+        'post-deploy' : 'npm install && pm2 reload API'
       }
     }
   };

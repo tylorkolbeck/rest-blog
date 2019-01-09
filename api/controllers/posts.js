@@ -43,7 +43,7 @@ exports.posts_get_all = (req, res, next) => {
         .exec()
         .then(docs => {
             res.status(200).json({
-                message: 'Connected to MLab DB',
+                message: 'There are ' + docs.length + ' posts',
                 numPosts: docs.length,
                 posts: docs.map(doc => {
                     return {

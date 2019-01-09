@@ -63,6 +63,8 @@ app.use('/user', userRoutes)
 // app.use('/filter/:filterTag', postsRoutes) 
 app.use('/msg', contactMsgRoutes)
 
+// app.use('/test')
+
 app.use((req, res, next) => {
     const error = new Error('Not Found')
     error.status = 404
