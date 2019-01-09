@@ -2,7 +2,7 @@ module.exports = {
     apps : [{
       name: 'API',
       script: 'server.js',
-      key: '~/.ssh/id_rsa.pub',
+      key: '~/.ssh/id_rsa',
   
       // Options reference: https://pm2.io/doc/en/runtime/reference/ecosystem-file/
       args: 'one two',
@@ -20,7 +20,7 @@ module.exports = {
   
     deploy : {
       production : {
-        key  : '~/.ssh/id_rsa.pub',
+        key  : '~/.ssh/id_rsa',
         user : 'ubuntu',
         host : '142.93.95.14',
         ref  : 'origin/master',
