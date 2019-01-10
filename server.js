@@ -3,7 +3,7 @@
 const http = require('http') // This is the only import syntax supported in node
 const app = require('./app')
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 8080
 
 const server = http.createServer(app)
 
