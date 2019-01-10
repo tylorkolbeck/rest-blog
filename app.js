@@ -42,10 +42,14 @@ app.use((req, res, next) => {
     res.header('Access-Control-Allow-Headers: Content-Type')
     res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, PATCH, OPTIONS');
     
+    
+
     if (req.method === 'OPTIONS') {
         console.log('OPTIONS')
-        res.header('Access-Control-Allow-Origin', '*')
+        res.header('Access-Control-Allow-Origin', 'https://thedailyfunc.com')
+        res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, PATCH, OPTIONS')
         res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization')
+        res.header('')
         return res.status(200).json({})
     }
     next() // Allow the request to continue to the routes
