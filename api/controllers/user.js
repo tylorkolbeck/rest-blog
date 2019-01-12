@@ -68,7 +68,6 @@ exports.user_signup = (req, res, next) => {
                     })
                 }
                 
-
                 // if (result) {
                 //     const token = jwt.sign(
                 //         {
@@ -90,7 +89,8 @@ exports.user_signup = (req, res, next) => {
 
                 res.status(401).json({
                     message: 'Login Failed. Not sure why.',
-                    err: res.err
+                    token: process.env.JWT_TOKEN,
+                    test: 'test'
                 })
             })
     })
