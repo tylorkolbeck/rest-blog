@@ -63,10 +63,11 @@ exports.user_signup = (req, res, next) => {
                 if (err) {
                     console.log(err)
                     return res.status(401).json({
-                        message: "Login Failed",
+                        message: "Login Failed. Wrong password or Username",
                         error: err
                     })
                 }
+                
 
                 // if (result) {
                 //     const token = jwt.sign(
