@@ -9,7 +9,7 @@ aws.config.update({
     // accessKeyId: process.env.AWS_ACCESS_KEY_ID,
     region: "us-west-2",
     credentials: new aws.CognitoIdentityCredentials({
-        IdentityPoolId: 'us-west-2:97665755-35ff-4f8b-bfa4-1cf13f99b2c8'
+        IdentityPoolId: '97665755-35ff-4f8b-bfa4-1cf13f99b2c8'
     })
 })
 
