@@ -74,7 +74,7 @@ exports.user_signup = (req, res, next) => {
                             email: user[0].email,
                             userId: user[0]._id
                         }, 
-                        'C5B7DE4E39A63B8B78A25F7A68C31', 
+                        process.env.JWT_KEY, 
                         {
                             expiresIn: "10d"
                         }
@@ -89,8 +89,7 @@ exports.user_signup = (req, res, next) => {
 
                 res.status(401).json({
                     message: 'Login Failed. Not sure why.',
-                    token: process.env.JWT_KEY,
-                    test: 'test'
+                    
                 })
             })
     })
