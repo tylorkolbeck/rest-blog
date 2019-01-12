@@ -52,7 +52,7 @@ exports.user_signup = (req, res, next) => {
     User.find({ email: req.body.email.toLowerCase() })
         .exec()
         .then(user => {
-            console.log('KEY TEST:', process.env.JWT_KEY)
+            
             if (user.length < 1) {
                 return res.status(401).json({
                     message: 'Login Failed. Please try again.'
@@ -67,24 +67,24 @@ exports.user_signup = (req, res, next) => {
                     })
                 }
 
-                if (result) {
-                    const token = jwt.sign(
-                        {
-                            email: user[0].email,
-                            userId: user[0]._id
-                        }, 
-                        process.env.JWT_KEY, 
-                        {
-                            expiresIn: "10d"
-                        }
-                        )
+                // if (result) {
+                //     const token = jwt.sign(
+                //         {
+                //             email: user[0].email,
+                //             userId: user[0]._id
+                //         }, 
+                //         process.env.JWT_KEY, 
+                //         {
+                //             expiresIn: "10d"
+                //         }
+                //         )
                       
-                        return res.status(200).json({
-                            message: "Login successful",
-                            token: token,
-                            userId: user[0]._id
-                        })
-                }
+                //         return res.status(200).json({
+                //             message: "Login successful",
+                //             token: token,
+                //             userId: user[0]._id
+                //         })
+                // }
 
                 res.status(401).json({
                     message: 'Login Failed'
