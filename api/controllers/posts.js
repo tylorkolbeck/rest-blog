@@ -5,9 +5,12 @@ const aws = require('aws-sdk')
 const mongoose = require("mongoose")
 
 aws.config.update({
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    region: "us-west-2"
+    // secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    // accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    region: "us-west-2",
+    credentials: new AWS.CognitoIdentityCredentials({
+        IdentityPoolId: 'us-west-2:97665755-35ff-4f8b-bfa4-1cf13f99b2c8'
+    })
 })
 
 const s3 = new aws.S3()
