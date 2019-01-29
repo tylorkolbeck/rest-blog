@@ -11,7 +11,8 @@ const postSchema = mongoose.Schema({
     tags: {type: Array},
     category: {type: String},
     postImages: {type: Array},
-    isPublic: {type: Boolean, default: false}
+    isPublic: {type: Boolean, default: false},
+    imageFolder: {type: String}
 })
 
 module.exports = mongoose.model('Post', postSchema)

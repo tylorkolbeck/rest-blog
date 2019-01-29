@@ -35,24 +35,24 @@ app.use(bodyParser.urlencoded({extended: false})) // parses url encoded bodies
 app.use(bodyParser.json()) // parses json encoded bodies
 
 // THIS IS FOR CORS HEADER SETTINGS
-// app.use((req, res, next) => {
-//     console.log('REGULAR')
-//     res.header('Access-Control-Allow-Origin', '*') // Allow cross server requests
-//     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization', 'poo')
-//     res.header('Access-Control-Allow-Headers: Content-Type')
-//     res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, PATCH, OPTIONS');
+app.use((req, res, next) => {
+    console.log('REGULAR')
+    res.header('Access-Control-Allow-Origin', '*') // Allow cross server requests
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization', 'poo')
+    res.header('Access-Control-Allow-Headers: Content-Type')
+    res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, PATCH, OPTIONS');
     
     
 
-//     if (req.method === 'OPTIONS') {
-//         console.log('OPTIONS')
-//         res.header('Access-Control-Allow-Origin', 'https://thedailyfunc.com')
-//         res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, PATCH, OPTIONS')
-//         res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization')
-//         return res.status(200).json({})
-//     }
-//     next() // Allow the request to continue to the routes
-// })
+    if (req.method === 'OPTIONS') {
+        console.log('OPTIONS')
+        res.header('Access-Control-Allow-Origin', 'https://thedailyfunc.com')
+        res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, PATCH, OPTIONS')
+        res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization')
+        return res.status(200).json({})
+    }
+    next() // Allow the request to continue to the routes
+})
  
 // DISABLE X-Powered-By header.  Prevents attackers from detecting apps running express
 app.disable('x-powered-by')

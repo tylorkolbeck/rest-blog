@@ -55,9 +55,9 @@ exports.user_signup = (req, res, next) => {
             
             if (user.length < 1) {
                 return res.status(401).json({
-                    message: 'Login Failed. Please try again.'
+                    message: 'Wrong user name.'
                 })
-            }
+            } 
         
             bcrypt.compare(req.body.password, user[0].password, (err, result) => {
                 if (err) {
