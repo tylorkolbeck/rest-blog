@@ -3,6 +3,7 @@ const User = require("../models/user");
 const bcrypt = require("bcrypt-nodejs");
 const jwt = require("jsonwebtoken");
 
+
 exports.user_signup = (req, res, next) => {
     User.find({ email: req.body.email })
       .exec()
@@ -74,7 +75,9 @@ exports.user_signup = (req, res, next) => {
                             email: user[0].email,
                             userId: user[0]._id
                         }, 
+                        
                         process.env.JWT_KEY, 
+
                         {
                             expiresIn: "10d"
                         }

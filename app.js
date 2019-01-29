@@ -6,6 +6,8 @@ const mongoose = require('mongoose')
 const app = express()
 const cors = require('cors')
 
+require('dotenv').config()
+
 // ATTATCH THE ROUTES
 const postsRoutes = require('./api/routes/posts')
 const commentsRoutes = require('./api/routes/comments')

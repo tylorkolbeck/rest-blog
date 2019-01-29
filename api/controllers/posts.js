@@ -4,6 +4,8 @@ const Post = require("../models/post")
 const aws = require('aws-sdk')
 const mongoose = require("mongoose")
 
+let JWT_KEY = process.env.JWT_KEY
+
 aws.config.update({
     // secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
     // accessKeyId: process.env.AWS_ACCESS_KEY_ID,
@@ -46,7 +48,8 @@ exports.posts_get_all = (req, res, next) => {
         .exec()
         .then(docs => {
             res.status(200).json({
-                message: 'There are ' + docs.length + ' posts',
+                
+                message: 'There are ' + docs.length + ' posts test' + JWT_KEY, 
                 numPosts: docs.length,
                 posts: docs.map(doc => {
                     return {
