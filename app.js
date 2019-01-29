@@ -86,3 +86,5 @@ app.use((error, req, res, next) => {
 })
 
 module.exports = app
+
+console.log(process.env.JWT_KEY)
