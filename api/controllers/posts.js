@@ -47,8 +47,7 @@ exports.posts_get_all = (req, res, next) => {
         .exec()
         .then(docs => {
             res.status(200).json({
-                
-                message: 'There are ' + docs.length + ' posts test' + JWT_KEY, 
+                message: 'There are ' + docs.length, 
                 numPosts: docs.length,
                 posts: docs.map(doc => {
                     return {
