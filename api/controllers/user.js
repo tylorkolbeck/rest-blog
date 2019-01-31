@@ -76,9 +76,7 @@ exports.user_signup = (req, res, next) => {
                             userId: user[0]._id
                         }, 
                         
-                        // process.env.JWT_KEY, 
-                        'bacon',
-
+                        process.env.JWT_KEY, 
                         {
                             expiresIn: "10d"
                         }

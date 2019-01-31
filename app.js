@@ -7,6 +7,7 @@ const app = express()
 const cors = require('cors')
 
 require('dotenv').config()
+console.log('ENV VARIABLES:' , process.env.MLAB_USERNAME, process.env.MLAB_PASSWORD)
 
 // ATTATCH THE ROUTES
 const postsRoutes = require('./api/routes/posts')
