@@ -4,7 +4,6 @@ const Post = require("../models/post")
 const aws = require('aws-sdk')
 const mongoose = require("mongoose")
 
-let JWT_KEY = process.env.JWT_KEY
 
 aws.config.update({
     // secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
