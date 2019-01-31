@@ -13,7 +13,7 @@ const postsRoutes = require('./api/routes/posts')
 const commentsRoutes = require('./api/routes/comments')
 const userRoutes = require('./api/routes/user')
 const contactMsgRoutes = require('./api/routes/contactMsg')
-console.log('test', process.env.MLAB_USERNAME)
+
 //Set up mongoose connection
 const mongoConnectionString = `mongodb://${process.env.MLAB_USERNAME}:${process.env.MLAB_PASSWORD}@ds159013.mlab.com:59013/blog_db`
 // const mongoConnectionString = `mongodb://test:test2@ds159013.mlab.com:59013/blog_db`
@@ -39,7 +39,8 @@ app.use(bodyParser.json()) // parses json encoded bodies
 
 // THIS IS FOR CORS HEADER SETTINGS
 app.use((req, res, next) => {
-    console.log('REGULAR')
+    // console.log('REGULAR')
+    console.log('test', process.env.MLAB_USERNAME)
     res.header('Access-Control-Allow-Origin', '*') // Allow cross server requests
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization', 'poo')
     res.header('Access-Control-Allow-Headers: Content-Type')
@@ -48,7 +49,7 @@ app.use((req, res, next) => {
     
 
     if (req.method === 'OPTIONS') {
-        console.log('OPTIONS')
+        // console.log('OPTIONS')
         res.header('Access-Control-Allow-Origin', 'https://thedailyfunc.com')
         res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, PATCH, OPTIONS')
         res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization')
