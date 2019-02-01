@@ -79,6 +79,8 @@ router.delete("/:postId", checkAuth, PostsController.posts_delete_post);
 // Updates a post in the db
 router.patch("/:postId", checkAuth, PostsController.posts_update_post);
 
+router.get("/directory-list", PostsController.directory_listing)
+
 
 
 module.exports = router;

@@ -29,6 +29,23 @@ exports.post_remove_image = (req, res, next) => {
       })
 }
 
+exports.directory_listing = (req, res, next) => {
+    console.log('RUNNING DIRECRTORT LISTING')
+        const s3Params = {
+            Bucket: 'tylorkolbeck.com',
+            MaxKeys: 20,
+            Delimiter: '/'
+        }
+
+        s3.listObjectsV2(s3Params, (err, data) => {
+            if (err) {
+                console.log(err)
+            } 
+                console.log(data)
+        })
+    }
+
+
 
 // ######################################################### //
 // ###### POST REQUEST TO ADD AN IMAGE TO S3 BUCKET ###### //
@@ -76,6 +93,23 @@ exports.posts_get_all = (req, res, next) => {
 // ##################################################################### //
 // ###### GET REQUEST TO RETRIEVE A SINGLE POST BY ID FROM THE DB ###### //
 exports.posts_get_post = (req, res, next) => {
+    let imageDirectory = req.params.postId ? req.params.postId : null
+    console.log('RUNNING DIRECTORY LISTING')
+        const s3Params = {
+            Bucket: 'tylorkolbeck.com',
+            MaxKeys: 20,
+            Delimiter: '',
+            Prefix: `imageUploads/${imageDirectory}`,
+        }
+
+        s3.listObjectsV2(s3Params, (err, data) => {
+            if (err) {
+                console.log(err)
+            } 
+                console.log(data)
+        })
+
+
     const postId = req.params.postId
     Post.findById(postId)
     .select('_id userId tags postImages title author bodyText description category createdAt isPublic')
@@ -120,7 +154,8 @@ exports.posts_create_post = (req, res, next) => {
         tags: req.body.tags,
         category:req.body.category,
         isPublic:req.body.isPublic,
-        postImages: req.body.postImages
+        postImages: req.body.postImages,
+        imageFolder: req.body.imageFolder
         
     })
     post.save() // Save the post to the DB then show the results
@@ -137,7 +172,8 @@ exports.posts_create_post = (req, res, next) => {
                     tags: result.tags,
                     category:result.category,
                     postImages: result.postImages,
-                    isPublic:result.isPublic
+                    isPublic:result.isPublic,
+                    imageFolder: result.imageFolder
                 }
             })
         })

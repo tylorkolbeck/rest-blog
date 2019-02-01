@@ -14,6 +14,7 @@ const postsRoutes = require('./api/routes/posts')
 const commentsRoutes = require('./api/routes/comments')
 const userRoutes = require('./api/routes/user')
 const contactMsgRoutes = require('./api/routes/contactMsg')
+const imageGalleryRoutes = require('./api/routes/image_gallery')
 
 //Set up mongoose connection
 const mongoConnectionString = `mongodb://${process.env.MLAB_USERNAME}:${process.env.MLAB_PASSWORD}@ds159013.mlab.com:59013/blog_db`
@@ -70,6 +71,7 @@ app.use('/posts', postsRoutes)
 app.use('/user', userRoutes) 
 // app.use('/filter/:filterTag', postsRoutes) 
 app.use('/msg', contactMsgRoutes)
+app.use('/image-gallery', imageGalleryRoutes)
 
 // app.use('/test')
 
