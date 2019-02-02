@@ -18,11 +18,11 @@ const upload = multer({
         bucket: 'tylorkolbeck.com',
         acl: 'public-read', 
         metadata: function(req, file, cb) {
-            cb(null, {fieldName: 'file.fieldName', directoryName: req.directoryName})
+            cb(null, {fieldName: 'file.fieldName'})
         },
         key: function(req, file, cb) {
             // let newFileName = Date.now().toString() + "-" + file.originalname
-            let fullPath = 'imageUploads/' + directoryName + '/' + file.originalname
+            let fullPath = 'imageUploads/' + 'directoryName' + '/' + file.originalname
             cb(null, fullPath)
         }
     })
