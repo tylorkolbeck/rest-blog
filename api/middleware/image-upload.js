@@ -18,7 +18,7 @@ const upload = multer({
         bucket: 'tylorkolbeck.com',
         acl: 'public-read', 
         metadata: function(req, file, cb) {
-            cb(null, {fieldName: 'file.fieldName'})
+            cb(null, {fieldName: req.imageDirectory})
         },
         key: function(req, file, cb) {
             console.log('TEST' , req)
