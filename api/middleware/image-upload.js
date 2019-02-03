@@ -21,10 +21,11 @@ const upload = multer({
             cb(null, {fieldName: 'file.fieldName'})
         },
         key: function(req, file, cb) {
-            let filenameFuckery = file.originalname.split(',')[0] + '/'
+            let fileDirectory = file.originalname.split(',')[0] + '/'
+            let fileName = file.originalname.split(',')[1]
             console.log('TEST' , file)
             // let newFileName = Date.now().toString() + "-" + file.originalname
-            let fullPath = 'imageUploads/' + filenameFuckery + file.originalname
+            let fullPath = 'imageUploads/' + fileDirectory + fileName
             cb(null, fullPath)
         }
     })
